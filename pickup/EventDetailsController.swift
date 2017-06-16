@@ -7,3 +7,29 @@
 //
 
 import Foundation
+
+class AttendeeTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var ConfirmedPic: UIImageView!   // Should be check if confirmed, "?" otherwise or something similar
+    @IBOutlet weak var ProfilePic: UIImageView!
+    @IBOutlet weak var Name: UILabel!
+}
+
+class EventDetailsViewController: UIViewController {
+    
+    @IBOutlet weak var Sport: UILabel!
+    @IBOutlet weak var HostPic: UIImageView!
+    @IBOutlet weak var HostName: UILabel!
+    @IBOutlet weak var Location: UILabel!
+    @IBOutlet weak var Time: UILabel!
+    @IBOutlet weak var SkillLevel: UILabel!
+    @IBOutlet weak var Attendees: UITableView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
