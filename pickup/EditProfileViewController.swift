@@ -9,30 +9,13 @@
 import UIKit
 import FirebaseDatabase
 
-class ProfileSportData {
-    var sport: String! //we probably want an enum
-    var level: String! //ditto
-}
-
-class ProfileData {
-    var firstName: String!
-    var lastName: String!
-    //var sports: Array<ProfileSportData>
-    //var time: ??? //unknown format
-    var bio: String?
-}
-
-class ProfileViewController: UIViewController {
-    @IBOutlet weak var FullName: UILabel!
-    
-    @IBOutlet weak var ProfilePic: UIImageView!
-    @IBOutlet weak var Sport1: UIImageView!
-    @IBOutlet weak var Sport2: UIImageView!
-    @IBOutlet weak var Sport3: UIImageView!
-    @IBOutlet weak var Sport4: UIImageView!
-    @IBOutlet weak var Level: UILabel!
+class EditProfileViewController: UIViewController {
+    @IBOutlet weak var Confirm: UIBarButtonItem!
+    @IBOutlet weak var FirstName: UITextField!
+    @IBOutlet weak var LastName: UITextField!
     @IBOutlet weak var Bio: UITextView!
     
+    var key: String?
     var ref: DatabaseReference!
     var profile: ProfileData?
     
@@ -40,21 +23,39 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("profile")
         self.ref.observe(.value, with: { snapshots in
+            let snapshot = snapshots.children.nextObject() as? DataSnapshot
+            self.key = snapshot?.key
             let dict = (snapshots.children.nextObject() as? DataSnapshot)?.value as? [String: String]
             if dict != nil {
                 self.profile = ProfileData()
                 self.profile?.firstName = dict?["firstName"]
                 self.profile?.lastName = dict?["lastName"]
                 self.profile?.bio = dict?["bio"]
-                self.FullName.text = "\(self.profile?.firstName ?? "") \(self.profile?.lastName ?? "")"
+                
+                self.FirstName.text = self.profile?.firstName
+                self.LastName.text = self.profile?.lastName
                 self.Bio.text = self.profile?.bio
             }
         })
     }
     
+    @IBAction func confirmChanges(_ sender: Any) {
+        let newProfile = [
+            "firstName": FirstName.text ?? "",
+            "lastName": LastName.text ?? "",
+            "bio": Bio.text ?? ""
+        ]
+        if self.key != nil {
+            self.ref.child(self.key!).setValue(newProfile)
+        } else {
+            self.ref.childByAutoId().setValue(newProfile)
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
 }

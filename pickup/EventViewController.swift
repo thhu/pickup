@@ -10,8 +10,6 @@ import UIKit
 import FirebaseDatabase
 
 class EventTableViewCell: UITableViewCell {
-    
-    
     @IBOutlet weak var Sport: UILabel!
     @IBOutlet weak var Location: UILabel!
     @IBOutlet weak var Time: UILabel!
@@ -19,6 +17,7 @@ class EventTableViewCell: UITableViewCell {
 
 class EventData {
     var key: String!
+    var organizer: String!
     var sport: String!
     var location: String!
     var time: String!

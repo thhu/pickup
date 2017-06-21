@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */; };
-		376B5F2B1EF3BEFF00EA3F54 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */; };
-		378501651EF034E4003E4C44 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378501641EF034E4003E4C44 /* ProfileViewController.swift */; };
 		378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378501661EF03747003E4C44 /* FriendsViewController.swift */; };
 		378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378779D41EEEB46D007F0DC4 /* EventViewController.swift */; };
 		37AEBCE11EF17845008D425F /* EventDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AEBCE01EF17845008D425F /* EventDetailsController.swift */; };
@@ -28,6 +26,8 @@
 		CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666C81EDF280F00CBB922 /* pickupTests.swift */; };
 		CC8666D41EDF280F00CBB922 /* pickupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666D31EDF280F00CBB922 /* pickupUITests.swift */; };
 		CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */; };
+		D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */; };
+		D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +55,6 @@
 		2702AA47A89EBF664DA2A49C /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
 		360F0FF0569F6DE6199DA785 /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
 		376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
-		376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
-		378501641EF034E4003E4C44 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		378501661EF03747003E4C44 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		378779D41EEEB46D007F0DC4 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		37AEBCE01EF17845008D425F /* EventDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsController.swift; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		CC8666D31EDF280F00CBB922 /* pickupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickupUITests.swift; sourceTree = "<group>"; };
 		CC8666D51EDF280F00CBB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E2E5D967DD7837C20E0BBE0D /* Pods_pickupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E885845A0ADCFB5F76AF55FF /* Pods-pickupTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickupTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pickupTests/Pods-pickupTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F84DB5CCB4B3DB224328D76D /* Pods-pickupTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickupTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickupTests/Pods-pickupTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,10 +139,10 @@
 				37AEBCE01EF17845008D425F /* EventDetailsController.swift */,
 				37AEBCE21EF178A9008D425F /* HostEventController.swift */,
 				378501661EF03747003E4C44 /* FriendsViewController.swift */,
-				378501641EF034E4003E4C44 /* ProfileViewController.swift */,
 				378779D41EEEB46D007F0DC4 /* EventViewController.swift */,
 				376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */,
-				376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */,
+				D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */,
+				D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -535,15 +535,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				376B5F2B1EF3BEFF00EA3F54 /* AvailabilityViewController.swift in Sources */,
+				D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */,
 				376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */,
 				37AEBCE31EF178A9008D425F /* HostEventController.swift in Sources */,
 				CC8666B41EDF280F00CBB922 /* AppDelegate.swift in Sources */,
-				378501651EF034E4003E4C44 /* ProfileViewController.swift in Sources */,
 				378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */,
 				37AEBCE11EF17845008D425F /* EventDetailsController.swift in Sources */,
 				37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */,
 				378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */,
+				D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
