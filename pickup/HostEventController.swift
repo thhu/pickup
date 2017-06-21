@@ -15,7 +15,7 @@ class HostEventViewController: UIViewController {
     @IBOutlet weak var Sport: UIButton!
     @IBOutlet weak var Location: UIButton!
     @IBOutlet weak var Level: UIButton!
-    @IBOutlet weak var NumPlayers: UITextField!
+    @IBOutlet weak var NumPlayers: UILabel!
     @IBOutlet weak var AdjustNumPlayers: UIStepper!
     
     let sportDropDown = DropDown()
@@ -34,6 +34,10 @@ class HostEventViewController: UIViewController {
     
     @IBAction func chooseLevel(_ sender: UIButton) {
         levelDropDown.show()
+    }
+    
+    @IBAction func numPlayerChanged(_ sender: UIStepper) {
+        NumPlayers.text = Int(sender.value).description
     }
     
     func setupDropDowns() {
@@ -59,6 +63,8 @@ class HostEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDropDowns()
+        AdjustNumPlayers.value = 2
+        AdjustNumPlayers.maximumValue = 10
         self.ref = Database.database().reference().child("events")
     }
 
