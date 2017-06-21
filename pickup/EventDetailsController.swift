@@ -17,6 +17,7 @@ class AttendeeTableViewCell: UITableViewCell {
 
 class EventDetailsViewController: UIViewController {
     
+    @IBOutlet weak var Members: UITableView!
     @IBOutlet weak var Sport: UILabel!
     @IBOutlet weak var HostPic: UIImageView!
     @IBOutlet weak var HostName: UILabel!
