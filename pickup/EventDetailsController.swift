@@ -24,9 +24,15 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var Time: UILabel!
     @IBOutlet weak var SkillLevel: UILabel!
     @IBOutlet weak var Attendees: UITableView!
+    
+    var eventData: EventData = EventData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.Sport.text = eventData.sport
+        self.Location.text = eventData.location
+        self.Time.text = eventData.time
+        self.SkillLevel.text = eventData.skillLevel ?? "All Skill Levels"
     }
     
     override func didReceiveMemoryWarning() {

@@ -6,6 +6,7 @@ use_frameworks!
 target 'pickup' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Database'
   pod 'DropDown' 
 end
 

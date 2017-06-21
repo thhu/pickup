@@ -8,6 +8,7 @@
 
 import Foundation
 import DropDown
+import FirebaseDatabase
 
 class HostEventViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class HostEventViewController: UIViewController {
     let sportDropDown = DropDown()
     let locationDropDown = DropDown()
     let levelDropDown = DropDown()
+    
+    var ref: DatabaseReference!
     
     @IBAction func chooseSport(_ sender: UIButton) {
         sportDropDown.show()
@@ -56,9 +59,20 @@ class HostEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDropDowns()
+        self.ref = Database.database().reference().child("events")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "inviteFriends") {
+            let database = self.ref.childByAutoId()
+            database.setValue(["sport": self.Sport.currentTitle,
+                               "location": self.Location.currentTitle,
+                               "level": self.Level.currentTitle,
+                               "numPlayers": self.NumPlayers.text])
+        }
     }
 }

@@ -72,7 +72,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl1-5o-Z6J">
-                                                    <rect key="frame" x="163" y="8" width="170" height="21"/>
+                                                    <rect key="frame" x="132" y="8" width="170" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="vic-hR-tbY"/>
                                                     </constraints>
@@ -90,7 +90,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month Day 00:00am-00:00am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbH-NE-pvh">
-                                                    <rect key="frame" x="-15" y="38" width="348" height="21"/>
+                                                    <rect key="frame" x="-15" y="38" width="317" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="TW6-Bf-Nu4"/>
                                                     </constraints>
@@ -114,7 +114,7 @@
                                             <outlet property="Location" destination="zl1-5o-Z6J" id="IT0-sc-0Rz"/>
                                             <outlet property="Sport" destination="eia-X8-04C" id="NMA-e8-CAS"/>
                                             <outlet property="Time" destination="jbH-NE-pvh" id="h2S-Pd-e3f"/>
-                                            <segue destination="IJ2-xv-kCY" kind="push" id="3f6-ix-g2o"/>
+                                            <segue destination="IJ2-xv-kCY" kind="push" identifier="eventDetails" id="3f6-ix-g2o"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,7 +136,7 @@
                     <navigationItem key="navigationItem" title="Events" id="k36-3G-fUw">
                         <barButtonItem key="rightBarButtonItem" title="Host Event" id="cav-3S-blV">
                             <connections>
-                                <segue destination="6sd-8j-baQ" kind="show" id="YV1-1V-cxR"/>
+                                <segue destination="6sd-8j-baQ" kind="show" identifier="hostEvent" id="YV1-1V-cxR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -205,7 +205,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIq-EA-A4A">
-                                                    <rect key="frame" x="78" y="8" width="246" height="48"/>
+                                                    <rect key="frame" x="78" y="8" width="215" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -217,7 +217,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-rd-IG1">
-                                                    <rect key="frame" x="328" y="14" width="38" height="37"/>
+                                                    <rect key="frame" x="297" y="14" width="38" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="38" id="SiF-2F-dno"/>
                                                     </constraints>
@@ -484,7 +484,7 @@
                     <navigationItem key="navigationItem" title="Host Event" id="U9M-6A-UEK">
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="6V6-eg-jy2">
                             <connections>
-                                <segue destination="0pi-h6-HQY" kind="show" id="VzF-zt-saf"/>
+                                <segue destination="0pi-h6-HQY" kind="show" identifier="inviteFriends" id="VzF-zt-saf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -547,7 +547,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0z-d1-m8I">
-                                                    <rect key="frame" x="84" y="17" width="282" height="28"/>
+                                                    <rect key="frame" x="84" y="17" width="251" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -804,7 +804,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0q-5I-sjh">
-                                                            <rect key="frame" x="84" y="17" width="290" height="28"/>
+                                                            <rect key="frame" x="84" y="17" width="251" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

@@ -33,16 +33,6 @@ class InviteViewController: UIViewController {
     
     
     @IBAction func Send(_ sender: UIBarButtonItem) {
-        let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Invite sent", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Your invitation was successfully sent", arguments: nil)
-        let request = UNNotificationRequest(identifier: "invitation", content: content, trigger: nil)
-        let center = UNUserNotificationCenter.current()
-        center.add(request) { (error: Error? ) in
-            if let theError = error {
-                print(theError.localizedDescription)
-            }
-        }
         self.performSegue(withIdentifier: "unwindToEventViewController", sender: self)
     }
 }
