@@ -7,6 +7,7 @@ target 'pickup' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
   pod 'DropDown' 
 end
 

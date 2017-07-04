@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var Sport: UILabel!
@@ -29,6 +30,12 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var ref: DatabaseReference!
     var eventItems: [EventData] = []
+    
+    /** @var handle
+     @brief The handler for the auth state listener, to allow cancelling later.
+     */
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("events")
@@ -49,6 +56,28 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if (user == nil){
+                /*UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"myViewController"];
+                vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                [self presentViewController:vc animated:YES completion:NULL];
+                */
+                var loginView: UIStoryboard!
+                loginView = UIStoryboard(name: "Login", bundle: nil)
+                let viewcontroller : UIViewController = loginView.instantiateViewController(withIdentifier: "LoginView") as UIViewController
+                self.present(viewcontroller, animated: true, completion: { 
+                    //
+                })
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func didReceiveMemoryWarning() {

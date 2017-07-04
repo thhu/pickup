@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ProfileSportData {
     var sport: String! //we probably want an enum
@@ -50,6 +51,23 @@ class ProfileViewController: UIViewController {
                 self.Bio.text = self.profile?.bio
             }
         })
+    }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        var loginView: UIStoryboard!
+        loginView = UIStoryboard(name: "Login", bundle: nil)
+        let viewcontroller : UIViewController = loginView.instantiateViewController(withIdentifier: "LoginView") as UIViewController
+        self.present(viewcontroller, animated: true, completion: {
+            //
+        })
+
     }
     
     override func didReceiveMemoryWarning() {
