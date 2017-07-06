@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FBSDKLoginKit
 
 class ProfileSportData {
     var sport: String! //we probably want an enum
@@ -61,12 +62,14 @@ class ProfileViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         
+        if (FBSDKAccessToken.current() != nil){
+            FBSDKAccessToken.setCurrent(nil)
+        }
+        
         var loginView: UIStoryboard!
         loginView = UIStoryboard(name: "Login", bundle: nil)
         let viewcontroller : UIViewController = loginView.instantiateViewController(withIdentifier: "LoginView") as UIViewController
-        self.present(viewcontroller, animated: true, completion: {
-            //
-        })
+        self.present(viewcontroller, animated: true, completion: nil)
 
     }
     

@@ -8,7 +8,9 @@ target 'pickup' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'DropDown' 
+  pod 'DropDown'
+  pod 'FacebookCore'
+  pod 'FacebookLogin' 
 end
 
 target 'pickupTests' do
