@@ -43,14 +43,16 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.eventItems.removeAll()
             for item in snapshot.children {
                 let data = item as! DataSnapshot
-                let dictionary = data.value as! [String: String]
+                let dictionary = data.value as! [String: Any]
                 
                 let eventData = EventData()
                 eventData.key = data.key
-                eventData.sport = dictionary["sport"]
-                eventData.location = dictionary["location"]
-                eventData.time = dictionary["time"]
-                eventData.skillLevel = dictionary["level"]
+                eventData.sport = dictionary["sport"] as! String
+                eventData.location = dictionary["location"]  as! String
+                if (dictionary["time"] != nil) {
+                    eventData.time = dictionary["time"]! as! String
+                }
+                eventData.skillLevel = dictionary["level"] as! String
                 
                 self.eventItems.append(eventData)
                 self.tableView.reloadData()

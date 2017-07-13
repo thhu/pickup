@@ -22,12 +22,17 @@ class HostEventViewController: UIViewController {
     let locationDropDown = DropDown()
     let levelDropDown = DropDown()
     
+    @IBOutlet weak var DateTime: UIDatePicker!
+    @IBOutlet weak var StartTime: UIDatePicker!
+    @IBOutlet weak var EndTime: UIDatePicker!
+    
     var ref: DatabaseReference!
     
     @IBAction func chooseSport(_ sender: UIButton) {
         sportDropDown.show()
     }
     
+    @IBOutlet weak var Date: UIDatePicker!
     @IBAction func chooseLocation(_ sender: UIButton) {
         locationDropDown.show()
     }
@@ -75,10 +80,35 @@ class HostEventViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "inviteFriends") {
             let database = self.ref.childByAutoId()
-            database.setValue(["sport": self.Sport.currentTitle,
-                               "location": self.Location.currentTitle,
-                               "level": self.Level.currentTitle,
-                               "numPlayers": self.NumPlayers.text])
+            
+            let calendar = NSCalendar.current
+
+            var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.DateTime.date)
+            var sComponents = calendar.dateComponents([.hour, .minute, .second], from: self.StartTime.date)
+            dateComponents.hour = sComponents.hour
+            dateComponents.minute = sComponents.minute
+            dateComponents.second = sComponents.second
+
+            let sDate = calendar.date(from: dateComponents)
+            
+            var eComponents = calendar.dateComponents([.hour, .minute, .second], from: self.EndTime.date)
+            dateComponents.hour = eComponents.hour
+            dateComponents.minute = eComponents.minute
+            dateComponents.second = eComponents.second
+            
+            let eDate = calendar.date(from: dateComponents)
+            let timeString = "\(dateComponents.month!)/\(dateComponents.day!) \(sComponents.hour!):\(sComponents.minute!)-\(eComponents.hour!):\(eComponents.minute!)"
+            
+            var outputs = [String:Any]()
+            outputs["sport"] = self.Sport.currentTitle!
+            outputs["location"] = self.Location.currentTitle!
+            outputs["level"] = self.Level.currentTitle!
+            outputs["numPlayers"] = self.NumPlayers.text!
+            outputs["start"] = sDate!.timeIntervalSince1970
+            outputs["end"] = eDate!.timeIntervalSince1970
+            outputs["time"] = timeString
+            
+            database.setValue(outputs)
         }
     }
 }

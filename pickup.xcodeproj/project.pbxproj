@@ -29,6 +29,8 @@
 		CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666C81EDF280F00CBB922 /* pickupTests.swift */; };
 		CC8666D41EDF280F00CBB922 /* pickupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666D31EDF280F00CBB922 /* pickupUITests.swift */; };
 		CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */; };
+		D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D039A1251F17CA1B002A4383 /* LoginViewController.swift */; };
+		D039A1281F17CA28002A4383 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D039A1271F17CA28002A4383 /* Login.storyboard */; };
 		D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */; };
 		D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */; };
 		FD45A90BBE5936AB4BCEF94D /* Pods_pickupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F3EE7C1EA7EFF62BF370A3 /* Pods_pickupUITests.framework */; };
@@ -92,6 +94,8 @@
 		CC8666D31EDF280F00CBB922 /* pickupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickupUITests.swift; sourceTree = "<group>"; };
 		CC8666D51EDF280F00CBB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D039A1251F17CA1B002A4383 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D039A1271F17CA28002A4383 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E2E5D967DD7837C20E0BBE0D /* Pods_pickupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +153,7 @@
 		376B5F271EF3BA6E00EA3F54 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D039A1251F17CA1B002A4383 /* LoginViewController.swift */,
 				37D866B81EF386F9009A6AEE /* InviteViewController.swift */,
 				37AEBCE01EF17845008D425F /* EventDetailsController.swift */,
 				37AEBCE21EF178A9008D425F /* HostEventController.swift */,
@@ -157,7 +162,6 @@
 				376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */,
 				D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */,
 				D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */,
-				376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */,
 				51592F5C1EFA30900032F606 /* PlayersViewController.swift */,
 			);
 			name = ViewControllers;
@@ -213,6 +217,7 @@
 		CC8666B21EDF280F00CBB922 /* pickup */ = {
 			isa = PBXGroup;
 			children = (
+				D039A1271F17CA28002A4383 /* Login.storyboard */,
 				CC1D18D41EF87001009A0774 /* pickup.entitlements */,
 				CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */,
 				376B5F271EF3BA6E00EA3F54 /* ViewControllers */,
@@ -388,6 +393,7 @@
 				CC8666BE1EDF280F00CBB922 /* LaunchScreen.storyboard in Resources */,
 				CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */,
 				CC8666BB1EDF280F00CBB922 /* Assets.xcassets in Resources */,
+				D039A1281F17CA28002A4383 /* Login.storyboard in Resources */,
 				CC8666B91EDF280F00CBB922 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +567,7 @@
 				37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */,
 				378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */,
 				D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */,
+				D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

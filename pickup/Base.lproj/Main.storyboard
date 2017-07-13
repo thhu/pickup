@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKZ-zp-rUC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKZ-zp-rUC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="eys-RC-ENn">
             <objects>
-                <tabBarController id="YKZ-zp-rUC" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="LoginView" id="YKZ-zp-rUC" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mdE-Wb-i6q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -434,10 +434,14 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="AdjustNumPlayers" destination="E2M-dN-auv" id="eu3-5b-NHZ"/>
+                        <outlet property="Date" destination="wnV-Nn-1ml" id="fyQ-Ib-LGU"/>
+                        <outlet property="DateTime" destination="wnV-Nn-1ml" id="igf-YN-uOy"/>
+                        <outlet property="EndTime" destination="iQp-zZ-2aK" id="5GS-Ey-3N9"/>
                         <outlet property="Level" destination="0M7-9d-Snd" id="e3p-L6-0l0"/>
                         <outlet property="Location" destination="np4-2u-Tpz" id="1fH-x1-rke"/>
                         <outlet property="NumPlayers" destination="zO9-tL-g9C" id="INL-Vi-9DR"/>
                         <outlet property="Sport" destination="Cnp-Wt-g0d" id="ygZ-DS-AlG"/>
+                        <outlet property="StartTime" destination="Dla-1g-O3q" id="kb5-62-eiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoC-tE-Ue9" userLabel="First Responder" sceneMemberID="firstResponder"/>
