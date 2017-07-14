@@ -16,7 +16,7 @@ class RegisterAccountViewController: UIViewController {
     @IBAction func registerAccount(_ sender: Any) {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, error) in
             if (error == nil){
-                self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

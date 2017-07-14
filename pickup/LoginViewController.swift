@@ -30,6 +30,12 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
         self.fbLoginButton.readPermissions = ["email"]
         self.fbLoginButton.delegate = self
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if(Auth.auth().currentUser != nil){
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!){
         if let error = error {
@@ -77,13 +83,11 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func completeLogin(email: String){
-        let query = Database.database().reference().child("user").queryLimited(toFirst: 1).queryEqual(toValue: email)
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.childrenCount)
+        let query = Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email)
+        query.observe(DataEventType.value, with: { (snapshot) in
             if (snapshot.childrenCount == 0){
-                print(1)
                 let ref = Database.database().reference().child("user").childByAutoId();
-                ref.setValue(email)
+                ref.setValue(["email": email])
             }
         })
         self.dismiss(animated: true, completion: nil)
