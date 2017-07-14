@@ -14,8 +14,6 @@
 		37AEBCE31EF178A9008D425F /* HostEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AEBCE21EF178A9008D425F /* HostEventController.swift */; };
 		37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D866B81EF386F9009A6AEE /* InviteViewController.swift */; };
 		51592F5D1EFA30900032F606 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51592F5C1EFA30900032F606 /* PlayersViewController.swift */; };
-		6FCC5ECEEAD9D075BA3D3FC8 /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2529698C5CA8157212E64330 /* Pods_pickup.framework */; };
-		8E9B7B5B8924A878F7173CE0 /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA490943FD8CA6E5AB2819 /* Pods_pickup.framework */; };
 		9C2B9AF175EE574EC39BE37A /* Pods_pickupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E5D967DD7837C20E0BBE0D /* Pods_pickupTests.framework */; };
 		A23B7A62A78AB1CD17FBA51A /* Pods_pickupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14C22101FBF3D9EAF4A2A62 /* Pods_pickupUITests.framework */; };
 		AC641BACD0A4F0A7982804E6 /* Pods_pickupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780DECD41DC5A7FFDC0BD9C8 /* Pods_pickupTests.framework */; };
@@ -26,7 +24,6 @@
 		CC8666B91EDF280F00CBB922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8666B71EDF280F00CBB922 /* Main.storyboard */; };
 		CC8666BB1EDF280F00CBB922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8666BA1EDF280F00CBB922 /* Assets.xcassets */; };
 		CC8666BE1EDF280F00CBB922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8666BC1EDF280F00CBB922 /* LaunchScreen.storyboard */; };
-		CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666C81EDF280F00CBB922 /* pickupTests.swift */; };
 		CC8666D41EDF280F00CBB922 /* pickupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666D31EDF280F00CBB922 /* pickupUITests.swift */; };
 		CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */; };
 		D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D039A1251F17CA1B002A4383 /* LoginViewController.swift */; };
@@ -109,8 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08325C82E01B5A6418183ED /* Pods_pickup.framework in Frameworks */,
-				6FCC5ECEEAD9D075BA3D3FC8 /* Pods_pickup.framework in Frameworks */,
-				8E9B7B5B8924A878F7173CE0 /* Pods_pickup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +285,6 @@
 			buildConfigurationList = CC8666DB1EDF280F00CBB922 /* Build configuration list for PBXNativeTarget "pickupTests" */;
 			buildPhases = (
 				772D113DA38BF2B769C74196 /* [CP] Check Pods Manifest.lock */,
-				CC8666C01EDF280F00CBB922 /* Sources */,
 				CC8666C11EDF280F00CBB922 /* Frameworks */,
 				CC8666C21EDF280F00CBB922 /* Resources */,
 				2694072F756385C49C8B2D9D /* [CP] Embed Pods Frameworks */,
@@ -344,6 +338,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -571,14 +568,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC8666C01EDF280F00CBB922 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CC8666CB1EDF280F00CBB922 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -733,6 +722,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LBWRVGK95J;
 				INFOPLIST_FILE = pickup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs446.pickup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -754,6 +744,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LBWRVGK95J;
 				INFOPLIST_FILE = pickup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs446.pickup;
 				PRODUCT_NAME = "$(TARGET_NAME)";

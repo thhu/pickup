@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 import FBSDKLoginKit
 
 
@@ -19,13 +20,14 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func loginButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: username.text!, password: password.text!) { (user, error) in
-            self.dismiss(animated: true, completion: nil)
+            self.completeLogin(email: self.username.text!)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fbLoginButton.readPermissions = ["email"]
         self.fbLoginButton.delegate = self
     }
     
@@ -47,12 +49,44 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
                 print(error.localizedDescription)
                 return
             }
+            self.getFBUserData();
             self.dismiss(animated: true, completion: nil)
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!){
         print("logout")
+    }
+    
+    func getFBUserData()
+    {
+        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,picture.type(large)"])
+        
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                print("Error: \(String(describing: error))")
+            }
+            else
+            {
+                let data:[String:Any] = result as! [String : Any]
+                self.completeLogin(email: data["email"] as! String)
+            }
+        })
+    }
+    
+    func completeLogin(email: String){
+        let query = Database.database().reference().child("user").queryLimited(toFirst: 1).queryEqual(toValue: email)
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.childrenCount)
+            if (snapshot.childrenCount == 0){
+                print(1)
+                let ref = Database.database().reference().child("user").childByAutoId();
+                ref.setValue(email)
+            }
+        })
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue){}

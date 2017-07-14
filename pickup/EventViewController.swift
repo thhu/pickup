@@ -53,7 +53,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     eventData.time = dictionary["time"]! as! String
                 }
                 eventData.skillLevel = dictionary["level"] as! String
-                
                 self.eventItems.append(eventData)
                 self.tableView.reloadData()
             }
