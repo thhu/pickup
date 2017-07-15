@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController {
         self.ref.observe(.value, with: { snapshots in
             let snapshot = snapshots.children.nextObject() as? DataSnapshot
             self.key = snapshot?.key
-            let dict = (snapshots.children.nextObject() as? DataSnapshot)?.value as? [String: String]
+            let dict = snapshots.value as? [String: String]
             if dict != nil {
                 self.profile = ProfileData()
                 self.profile?.firstName = dict?["firstName"]
