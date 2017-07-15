@@ -124,11 +124,17 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
         self.ref.observe(.value, with: { snapshots in
-            let dict = snapshots.value as? [String: String]
+            let snapshot = snapshots.children.nextObject() as? DataSnapshot
+            self.key = snapshot?.key
+            let dict = (snapshots.children.nextObject() as? DataSnapshot)?.value as? [String: String]
             if dict != nil {
                 self.profile = ProfileData()
                 self.profile?.firstName = dict?["firstName"]

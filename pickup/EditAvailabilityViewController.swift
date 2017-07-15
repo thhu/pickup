@@ -12,10 +12,14 @@ import JTAppleCalendar
 class EditAvailabilityViewController: UIViewController {
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var time1: UIDatePicker!
+    @IBOutlet weak var time2: UIDatePicker!
+    @IBOutlet weak var availTable: UITableView!
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
