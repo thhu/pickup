@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371596F51F198CD4003B4CEF /* EditAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */; };
+		371596F71F198CFE003B4CEF /* JTCalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371596F61F198CFE003B4CEF /* JTCalCellView.swift */; };
+		371596F91F198D15003B4CEF /* JTCalCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371596F81F198D15003B4CEF /* JTCalCellView.xib */; };
 		376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */; };
 		378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378501661EF03747003E4C44 /* FriendsViewController.swift */; };
 		378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378779D41EEEB46D007F0DC4 /* EventViewController.swift */; };
@@ -31,6 +34,7 @@
 		D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D039A1251F17CA1B002A4383 /* LoginViewController.swift */; };
 		D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */; };
 		D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */; };
+		D47F2E63F27E2AEA0AA6BD6A /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2529698C5CA8157212E64330 /* Pods_pickup.framework */; };
 		FD45A90BBE5936AB4BCEF94D /* Pods_pickupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F3EE7C1EA7EFF62BF370A3 /* Pods_pickupUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,9 @@
 		2529698C5CA8157212E64330 /* Pods_pickup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702AA47A89EBF664DA2A49C /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
 		360F0FF0569F6DE6199DA785 /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
+		371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAvailabilityViewController.swift; sourceTree = "<group>"; };
+		371596F61F198CFE003B4CEF /* JTCalCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCalCellView.swift; sourceTree = "<group>"; };
+		371596F81F198D15003B4CEF /* JTCalCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTCalCellView.xib; sourceTree = "<group>"; };
 		376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		378501661EF03747003E4C44 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		378779D41EEEB46D007F0DC4 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08325C82E01B5A6418183ED /* Pods_pickup.framework in Frameworks */,
+				D47F2E63F27E2AEA0AA6BD6A /* Pods_pickup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +158,7 @@
 		376B5F271EF3BA6E00EA3F54 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */,
 				CC44D2E81F185D8C00B0ABF9 /* RegsiterAccountViewController.swift */,
 				D039A1251F17CA1B002A4383 /* LoginViewController.swift */,
 				37D866B81EF386F9009A6AEE /* InviteViewController.swift */,
@@ -215,12 +224,14 @@
 		CC8666B21EDF280F00CBB922 /* pickup */ = {
 			isa = PBXGroup;
 			children = (
+				371596F81F198D15003B4CEF /* JTCalCellView.xib */,
 				CC1D18D41EF87001009A0774 /* pickup.entitlements */,
 				CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */,
 				376B5F271EF3BA6E00EA3F54 /* ViewControllers */,
 				CC8666B31EDF280F00CBB922 /* AppDelegate.swift */,
 				CC8666B51EDF280F00CBB922 /* ViewController.swift */,
 				CC8666B71EDF280F00CBB922 /* Main.storyboard */,
+				371596F61F198CFE003B4CEF /* JTCalCellView.swift */,
 				CC8666BA1EDF280F00CBB922 /* Assets.xcassets */,
 				CC8666BC1EDF280F00CBB922 /* LaunchScreen.storyboard */,
 				CC44D2EA1F1914F300B0ABF9 /* Login.storyboard */,
@@ -395,6 +406,7 @@
 				CC44D2EB1F1914F300B0ABF9 /* Login.storyboard in Resources */,
 				CC8666BB1EDF280F00CBB922 /* Assets.xcassets in Resources */,
 				CC8666B91EDF280F00CBB922 /* Main.storyboard in Resources */,
+				371596F91F198D15003B4CEF /* JTCalCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */,
+				371596F71F198CFE003B4CEF /* JTCalCellView.swift in Sources */,
 				376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */,
 				37AEBCE31EF178A9008D425F /* HostEventController.swift in Sources */,
 				CC44D2E91F185D8C00B0ABF9 /* RegsiterAccountViewController.swift in Sources */,
@@ -569,6 +582,7 @@
 				378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */,
 				D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */,
 				D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */,
+				371596F51F198CD4003B4CEF /* EditAvailabilityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
