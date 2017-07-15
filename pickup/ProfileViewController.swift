@@ -40,9 +40,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference().child("profile")
+        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
         self.ref.observe(.value, with: { snapshots in
-            let dict = (snapshots.children.nextObject() as? DataSnapshot)?.value as? [String: String]
+            let dict = snapshots.value as? [String: String]
             if dict != nil {
                 self.profile = ProfileData()
                 self.profile?.firstName = dict?["firstName"]
@@ -65,6 +65,9 @@ class ProfileViewController: UIViewController {
         if (FBSDKAccessToken.current() != nil){
             FBSDKAccessToken.setCurrent(nil)
         }
+        
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.synchronize()
         
         var loginView: UIStoryboard!
         loginView = UIStoryboard(name: "Login", bundle: nil)

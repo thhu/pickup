@@ -84,11 +84,18 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     func completeLogin(email: String){
         let query = Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email)
-        query.observe(DataEventType.value, with: { (snapshot) in
+        query.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if (snapshot.childrenCount == 0){
                 let ref = Database.database().reference().child("user").childByAutoId();
                 ref.setValue(["email": email])
+                UserDefaults.standard.setValue(ref.key, forKey: "token")
+            } else if (snapshot.childrenCount == 1) {
+                for child in snapshot.children {
+                    UserDefaults.standard.setValue((child as! DataSnapshot).key, forKey: "token")
+                }
+                
             }
+            UserDefaults.standard.synchronize()
         })
         self.dismiss(animated: true, completion: nil)
     }

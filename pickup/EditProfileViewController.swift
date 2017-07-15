@@ -19,9 +19,13 @@ class EditProfileViewController: UIViewController {
     var ref: DatabaseReference!
     var profile: ProfileData?
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference().child("profile")
+        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
         self.ref.observe(.value, with: { snapshots in
             let snapshot = snapshots.children.nextObject() as? DataSnapshot
             self.key = snapshot?.key
@@ -45,11 +49,7 @@ class EditProfileViewController: UIViewController {
             "lastName": LastName.text ?? "",
             "bio": Bio.text ?? ""
         ]
-        if self.key != nil {
-            self.ref.child(self.key!).setValue(newProfile)
-        } else {
-            self.ref.childByAutoId().setValue(newProfile)
-        }
+        self.ref.updateChildValues(newProfile)
         self.navigationController?.popViewController(animated: true)
     }
     
