@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func confirmChanges(_ sender: Any) {
-        let fName = FullName.text?.components(separatedBy: " ")
+        let fName = FullName.text?.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ")
         let newProfile = [
             "firstName": fName?[0] ?? "",
             "lastName": fName?[1] ?? "",
@@ -125,25 +125,18 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
+        print(self.ref.url)
         self.ref.observe(.value, with: { snapshots in
-            let snapshot = snapshots.children.nextObject() as? DataSnapshot
-            self.key = snapshot?.key
-            let dict = snapshots.value as? [String: String]
-            if dict != nil {
+            print(snapshots)
+            let dict = snapshots.value as! [String: Any]
                 self.profile = ProfileData()
-                self.profile?.firstName = dict?["firstName"]
-                self.profile?.lastName = dict?["lastName"]
-                self.profile?.bio = dict?["bio"]
-                self.profile?.lvl1 = ((dict?["lvl1"]) != nil) ? Int((dict?["lvl1"])!) : 0
-                self.profile?.lvl2 = ((dict?["lvl2"]) != nil) ? Int((dict?["lvl2"])!) : 0
-                self.profile?.lvl3 = ((dict?["lvl3"]) != nil) ? Int((dict?["lvl3"])!) : 0
-                self.profile?.lvl4 = ((dict?["lvl4"]) != nil) ? Int((dict?["lvl4"])!) : 0
+                self.profile?.firstName = dict["firstName"] as! String
+                self.profile?.lastName = dict["lastName"] as! String
+                self.profile?.bio = dict["bio"] as? String
+                self.profile?.lvl1 = ((dict["lvl1"]) != nil) ? Int((dict["lvl1"] as! Int)) : 0
+                self.profile?.lvl2 = ((dict["lvl2"]) != nil) ? Int((dict["lvl2"] as! Int)) : 0
+                self.profile?.lvl3 = ((dict["lvl3"]) != nil) ? Int((dict["lvl3"] as! Int)) : 0
+                self.profile?.lvl4 = ((dict["lvl4"]) != nil) ? Int((dict["lvl4"] as! Int)) : 0
                 self.lvls = [(self.profile?.lvl1)!, (self.profile?.lvl2)!, (self.profile?.lvl3)!, (self.profile?.lvl4)!]
                 self.updateDots(i: self.lvls[0], dots: self.sport1dots!)
                 self.updateDots(i: self.lvls[1], dots: self.sport2dots!)
@@ -151,10 +144,17 @@ class ProfileViewController: UIViewController {
                 self.updateDots(i: self.lvls[3], dots: self.sport4dots!)
                 self.FullName.text = "\(self.profile?.firstName ?? "") \(self.profile?.lastName ?? "")"
                 self.Bio.text = self.profile?.bio
-            }
+            
         })
-        
-       
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.ref.removeAllObservers()
     }
     
     @IBAction func logoutButton(_ sender: Any) {
