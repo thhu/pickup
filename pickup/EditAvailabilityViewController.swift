@@ -29,6 +29,7 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
     var ref: DatabaseReference!
     var timeBlocks = [DateInterval]()
     let formatter = DateFormatter()
+    let formatter2 = DateFormatter()
     
 
     @IBAction func addAvail(_ sender: Any) {
@@ -38,15 +39,22 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func saveAvail(_ sender: Any) {
-        let newBlocks = ["availability": timeBlocks] as [String : [DateInterval]]
-        self.ref.updateChildValues(newBlocks)
+        self.ref.removeValue()
+        for block in self.timeBlocks {
+            self.ref.childByAutoId().setValue(["start": self.formatter2.string(for: block.start), "end": self.formatter2.string(for: block.end)])
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        timeBlocks.removeAll()
         self.ref.observe(.value, with: { snapshots in
             print(snapshots)
-            if let dict = snapshots.value as? [String: Any]{
-                self.timeBlocks = (dict["availability"] as? [DateInterval])!
+            for item in snapshots.children {
+                let data = item as! DataSnapshot
+                let dict = data.value as! [String: Any]
+                let block = DateInterval(start: self.formatter2.date(from: dict["start"] as! String)!, end: self.formatter2.date(from: dict["end"] as! String)!)
+                
+                self.timeBlocks.append(block)
             }
             
         })
@@ -65,6 +73,8 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
         formatter.dateFormat = "HH:mm a"
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
+        
+        formatter2.dateFormat = "MM-dd-yyyy HH:mm a"
         
         calendarView.dataSource = self
         calendarView.delegate = self
