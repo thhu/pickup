@@ -39,24 +39,6 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("events")
-        self.ref.observe(.value, with: { snapshot in
-            self.eventItems.removeAll()
-            for item in snapshot.children {
-                let data = item as! DataSnapshot
-                let dictionary = data.value as! [String: Any]
-                
-                let eventData = EventData()
-                eventData.key = data.key
-                eventData.sport = dictionary["sport"] as! String
-                eventData.location = dictionary["location"]  as! String
-                if (dictionary["time"] != nil) {
-                    eventData.time = dictionary["time"]! as! String
-                }
-                eventData.skillLevel = dictionary["level"] as! String
-                self.eventItems.append(eventData)
-                self.tableView.reloadData()
-            }
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,8 +52,25 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 var loginView: UIStoryboard!
                 loginView = UIStoryboard(name: "Login", bundle: nil)
                 let viewcontroller : UIViewController = loginView.instantiateViewController(withIdentifier: "LoginView") as UIViewController
-                self.present(viewcontroller, animated: true, completion: { 
-                    //
+                self.present(viewcontroller, animated: true, completion: nil)
+            } else {
+                self.ref.observe(.value, with: { snapshot in
+                    self.eventItems.removeAll()
+                    for item in snapshot.children {
+                        let data = item as! DataSnapshot
+                        let dictionary = data.value as! [String: Any]
+                        
+                        let eventData = EventData()
+                        eventData.key = data.key
+                        eventData.sport = dictionary["sport"] as! String
+                        eventData.location = dictionary["location"]  as! String
+                        if (dictionary["time"] != nil) {
+                            eventData.time = dictionary["time"]! as! String
+                        }
+                        eventData.skillLevel = dictionary["level"] as! String
+                        self.eventItems.append(eventData)
+                        self.tableView.reloadData()
+                    }
                 })
             }
         }
@@ -79,6 +78,7 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(handle!)
+        self.ref.removeAllObservers()
     }
     
     override func didReceiveMemoryWarning() {
