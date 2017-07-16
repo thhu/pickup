@@ -25,6 +25,7 @@ class ProfileData {
     var lvl3: Int!
     var lvl4: Int!
     var bio: String?
+    var imageUrl: String?
 }
 
 class ProfileViewController: UIViewController {
@@ -41,6 +42,7 @@ class ProfileViewController: UIViewController {
     
     var ref: DatabaseReference!
     var profile: ProfileData?
+    var pictureLoaded: Bool?
     var lvls = [0, 0, 0, 0]
     var key: String?
     
@@ -124,14 +126,36 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func loadProfilePicture(url: String){
+        if let picUrl = URL(string: url) {
+            getDataFromUrl(url: picUrl) { (data, response, error)  in
+                guard let data = data, error == nil else { return }
+                print(response?.suggestedFilename ?? picUrl.lastPathComponent)
+                print("Download Finished")
+                self.pictureLoaded = true
+                DispatchQueue.main.async() { () -> Void in
+                    self.ProfilePic.image = UIImage(data: data)
+                }
+            }
+
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         print(self.ref.url)
         self.ref.observe(.value, with: { snapshots in
             print(snapshots)
-            let dict = snapshots.value as! [String: Any]
+            if let dict = snapshots.value as? [String: Any]{
                 self.profile = ProfileData()
-                self.profile?.firstName = dict["firstName"] as! String
-                self.profile?.lastName = dict["lastName"] as! String
+                self.profile?.firstName = dict["firstName"] as? String
+                self.profile?.lastName = dict["lastName"] as? String
                 self.profile?.bio = dict["bio"] as? String
                 self.profile?.lvl1 = ((dict["lvl1"]) != nil) ? Int((dict["lvl1"] as! Int)) : 0
                 self.profile?.lvl2 = ((dict["lvl2"]) != nil) ? Int((dict["lvl2"] as! Int)) : 0
@@ -144,13 +168,28 @@ class ProfileViewController: UIViewController {
                 self.updateDots(i: self.lvls[3], dots: self.sport4dots!)
                 self.FullName.text = "\(self.profile?.firstName ?? "") \(self.profile?.lastName ?? "")"
                 self.Bio.text = self.profile?.bio
+                self.profile?.imageUrl = dict["pictureUrl"] as? String
+                if (!self.pictureLoaded!){
+                    self.loadProfilePicture(url: (self.profile?.imageUrl!)!)
+                }
+            }
             
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference().child("user").child(UserDefaults.standard.string(forKey: "token")!)
+        self.pictureLoaded = false;
+        if let token = UserDefaults.standard.string(forKey: "token") {
+            self.ref = Database.database().reference().child("user").child(token)
+        } else {
+            self.ref = Database.database().reference().child("profile")
+        }
+        if let pictureUrl = UserDefaults.standard.string(forKey: "profilePictureUrl"){
+            if (!self.pictureLoaded!){
+                self.loadProfilePicture(url: pictureUrl)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -170,6 +209,7 @@ class ProfileViewController: UIViewController {
         }
         
         UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "profilePictureUrl")
         UserDefaults.standard.synchronize()
         
         var loginView: UIStoryboard!

@@ -20,7 +20,7 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func loginButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: username.text!, password: password.text!) { (user, error) in
-            self.completeLogin(email: self.username.text!)
+            self.completeLogin(email: self.username.text!, pictureUrl: "")
         }
     }
     
@@ -66,7 +66,7 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
     
     func getFBUserData()
     {
-        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,picture.type(large)"])
+        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, picture.type(large)"])
         
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
@@ -76,19 +76,26 @@ class LoginViewController : UIViewController, FBSDKLoginButtonDelegate {
             }
             else
             {
-                let data:[String:Any] = result as! [String : Any]
-                self.completeLogin(email: data["email"] as! String)
+                let data:[String: Any] = result as! [String: Any]
+                print(data)
+                if let imageURL = ((data["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                    self.completeLogin(email: data["email"] as! String, pictureUrl: imageURL)
+                } else {
+                    self.completeLogin(email: data["email"] as! String, pictureUrl: "")
+                }
             }
         })
     }
     
-    func completeLogin(email: String){
+    func completeLogin(email: String, pictureUrl: String){
         let query = Database.database().reference().child("user").queryOrdered(byChild: "email").queryEqual(toValue: email)
         query.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if (snapshot.childrenCount == 0){
+                print(pictureUrl)
                 let ref = Database.database().reference().child("user").childByAutoId();
-                ref.setValue(["email": email])
+                ref.setValue(["email": email, "pictureUrl": pictureUrl])
                 UserDefaults.standard.setValue(ref.key, forKey: "token")
+                UserDefaults.standard.setValue(pictureUrl, forKey: "profilePictureUrl")
             } else if (snapshot.childrenCount == 1) {
                 for child in snapshot.children {
                     UserDefaults.standard.setValue((child as! DataSnapshot).key, forKey: "token")
