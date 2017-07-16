@@ -11,6 +11,7 @@ target 'pickup' do
   pod 'DropDown'
   pod 'FacebookCore'
   pod 'FacebookLogin' 
+  pod 'JTAppleCalendar', '~> 6.0.0-beta.1'
 end
 
 target 'pickupTests' do
