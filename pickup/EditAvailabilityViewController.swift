@@ -37,9 +37,31 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
         self.availTable.reloadData()
     }
     
+    @IBAction func saveAvail(_ sender: Any) {
+        let newBlocks = ["availability": timeBlocks] as [String : [DateInterval]]
+        self.ref.updateChildValues(newBlocks)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.ref.observe(.value, with: { snapshots in
+            print(snapshots)
+            if let dict = snapshots.value as? [String: Any]{
+                self.timeBlocks = (dict["availability"] as? [DateInterval])!
+            }
+            
+        })
+        availTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let token = UserDefaults.standard.string(forKey: "token") {
+            self.ref = Database.database().reference().child("user").child(token).child("availability")
+        } else {
+            self.ref = Database.database().reference().child("profile")
+        }
+        
         formatter.dateFormat = "HH:mm a"
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
@@ -49,6 +71,10 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
         calendarView.registerCellViewXib(file: "JTCalCellView") // Registering your cell is manditory
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         calendarView.selectDates([Date.init()])
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.ref.removeAllObservers()
     }
     
     override func didReceiveMemoryWarning() {

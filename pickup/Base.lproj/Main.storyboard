@@ -912,7 +912,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Availability" id="oDg-Cq-JR5">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="PKG-Pd-agn"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="PKG-Pd-agn">
+                            <connections>
+                                <action selector="saveAvail:" destination="x6b-vc-F5N" id="EZ9-JA-5N0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
