@@ -68,14 +68,7 @@ class FriendsViewController: UIViewController {
                 self.userItems.append(data)
                 itemIndex = itemIndex + 1
             }
-            self.dataSource = {
-                var array: [UIImage] = []
-                for index in 0..<numberOfCards {
-                    array.append(self.userItems[index].image!)//UIImage(named: "dp\(index+1)")!)
-                }
-            
-                return array
-            }()
+           
         })
         
         
@@ -118,6 +111,8 @@ class FriendsViewController: UIViewController {
                 print("Download Finished")
                 DispatchQueue.main.async() { () -> Void in
                     self.userItems[index].image = UIImage(data: data)
+                    self.dataSource.append(self.userItems[index].image!)
+                    self.kolodaView.reloadData()
                 }
             }
             
