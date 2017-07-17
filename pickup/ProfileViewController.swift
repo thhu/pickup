@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Koloda
 
 class ProfileViewController: UIViewController {
+    
     
     @IBOutlet weak var ProfilePic: UIImageView!
     @IBOutlet weak var Sport1: UIImageView!
@@ -17,13 +19,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var Sport4: UIImageView!
     @IBOutlet weak var Level: UILabel!
     @IBOutlet weak var Bio: UITextView!
-    override func viewDidLoad() {
-        super.viewDidLoad()        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     
 }

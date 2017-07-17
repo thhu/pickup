@@ -7,8 +7,50 @@
 //
 
 import UIKit
+import Koloda
+
+private var numberOfCards: Int = 5
 
 class FriendsViewController: UIViewController {
+    @IBOutlet weak var kolodaView: KolodaView!
+    
+    fileprivate var dataSource: [UIImage] = {
+        var array: [UIImage] = []
+        for index in 0..<numberOfCards {
+            array.append(UIImage(named: "dp\(index+1)")!)
+        }
+        
+        return array
+    }()
+    
+    // LIFECYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        kolodaView.dataSource = self
+        kolodaView.delegate = self
+        
+        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // IBACTIONS
+    
+    @IBAction func leftButtonTapped() {
+        kolodaView?.swipe(.left)
+    }
+    
+    @IBAction func rightButtonTapped() {
+        kolodaView?.swipe(.right)
+    }
+    
+    @IBAction func undoButtonTapped() {
+        kolodaView?.revertAction()
+    }
     
     var swipes = 0
     
@@ -26,7 +68,7 @@ class FriendsViewController: UIViewController {
     @IBOutlet weak var Level: UILabel!
     @IBOutlet weak var HockeyLevels1: UIImageView!
     @IBOutlet weak var Bio: UITextView!
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
         /*ProfilePic.isHidden = false
         ProfilePic2.isHidden = true
@@ -37,11 +79,7 @@ class FriendsViewController: UIViewController {
         YesButton.addGestureRecognizer(singleTap)
         NoButton.isUserInteractionEnabled = true
         NoButton.addGestureRecognizer(singleTap)*/
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    }*/
     
     
     @IBAction func NoClick(_ sender: Any) {
@@ -69,4 +107,45 @@ class FriendsViewController: UIViewController {
         swipes = swipes + 1
     }*/
     
+}
+
+extension FriendsViewController: KolodaViewDelegate {
+    
+    func kolodaDidRunOutOfCards(koloda: KolodaView) {
+        let position = kolodaView.currentCardIndex
+        for i in 1...4 {
+            dataSource.append(UIImage(named: "dp\(i)")!)
+        }
+        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
+    }
+    
+    func koloda(koloda: KolodaView, didSelectCardAt index: Int) {
+        //handle right swipe
+    }
+}
+
+extension FriendsViewController: KolodaViewDataSource {
+    
+    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int
+    {
+        //return images.count
+        return dataSource.count
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed
+    {
+        return .default
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView
+    {
+        return UIImageView(image: dataSource[Int(index)])
+    }
+    
+    func koloda(koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView?
+    {
+        return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
+        /*return NSBundle.mainBundle().loadNibNamed("OverlayView",
+         owner: self, options: nil)[0] as? OverlayView*/
+    }
 }

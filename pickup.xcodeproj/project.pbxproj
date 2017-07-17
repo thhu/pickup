@@ -16,6 +16,7 @@
 		37AEBCE31EF178A9008D425F /* HostEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AEBCE21EF178A9008D425F /* HostEventController.swift */; };
 		37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D866B81EF386F9009A6AEE /* InviteViewController.swift */; };
 		51592F5D1EFA30900032F606 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51592F5C1EFA30900032F606 /* PlayersViewController.swift */; };
+		51A2C5571F02E8C900ACE711 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A2C5561F02E8C900ACE711 /* FacilitiesViewController.swift */; };
 		6FCC5ECEEAD9D075BA3D3FC8 /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2529698C5CA8157212E64330 /* Pods_pickup.framework */; };
 		8E9B7B5B8924A878F7173CE0 /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AA490943FD8CA6E5AB2819 /* Pods_pickup.framework */; };
 		9C2B9AF175EE574EC39BE37A /* Pods_pickupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E5D967DD7837C20E0BBE0D /* Pods_pickupTests.framework */; };
@@ -71,6 +72,7 @@
 		44523158AAFBC606DD91FB2E /* Pods-pickupTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickupTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickupTests/Pods-pickupTests.release.xcconfig"; sourceTree = "<group>"; };
 		47AA490943FD8CA6E5AB2819 /* Pods_pickup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51592F5C1EFA30900032F606 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
+		51A2C5561F02E8C900ACE711 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		580D6FE4816A1334BA0D7D73 /* Pods-pickup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.debug.xcconfig"; sourceTree = "<group>"; };
 		780DECD41DC5A7FFDC0BD9C8 /* Pods_pickupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC4B237FB854C3819F76700 /* Pods_pickupUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */,
 				376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */,
 				51592F5C1EFA30900032F606 /* PlayersViewController.swift */,
+				51A2C5561F02E8C900ACE711 /* FacilitiesViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				CC8666B41EDF280F00CBB922 /* AppDelegate.swift in Sources */,
 				378501651EF034E4003E4C44 /* ProfileViewController.swift in Sources */,
 				378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */,
+				51A2C5571F02E8C900ACE711 /* FacilitiesViewController.swift in Sources */,
 				37AEBCE11EF17845008D425F /* EventDetailsController.swift in Sources */,
 				37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */,
 				378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */,
