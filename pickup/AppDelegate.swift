@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        print("0")
         
         // Print full message.
         print(userInfo)
@@ -94,9 +95,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        print("1")
         
         // Print full message.
         print(userInfo)
+        
+        switch application.applicationState {
+        case .active:
+            //app is currently active, can update badges count here
+            print("update badges")
+            break
+        case .inactive:
+            //app is transitioning from background to foreground (user taps notification), do what you need when user taps here
+            print("notification tapped")
+            break
+        case .background:
+            //app is in background, if content-available key of your notification is set to 1, poll to your backend to retrieve data and update your interface here
+            break
+        }
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -138,6 +154,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        print("2")
         
         // Print full message.
         print(userInfo)
@@ -154,9 +171,16 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
+        print("3")
         // Print full message.
         print(userInfo)
+        if let aps = userInfo["aps"] as? Dictionary<String, Any> {
+            print("1")
+            if let category = aps["category"] as? String {
+                print(category)
+            }
+        }
+
         
         completionHandler()
     }
@@ -167,6 +191,11 @@ extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
+        if let token = UserDefaults.standard.string(forKey: "token") {
+            Database.database().reference().child("user").child(token).updateChildValues(["fcmToken": fcmToken])
+        } else {
+            Database.database().reference().child("profile").updateChildValues(["fcmToken": fcmToken])
+        }
     }
     // [END refresh_token]
     // [START ios_10_data_message]
