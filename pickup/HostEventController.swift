@@ -73,6 +73,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     var times = [String]()
     
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
     var eventData: Dictionary<String, String>?
     
     @IBAction func chooseSport(_ sender: UIButton) {
@@ -121,6 +122,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
 //        AdjustNumPlayers.value = 2
 //        AdjustNumPlayers.maximumValue = 10
         self.ref = Database.database().reference().child("events")
+        self.userRef = Database.database().reference().child("user")
     }
 
     override func didReceiveMemoryWarning() {
@@ -135,9 +137,20 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
             if let dict = eventData {
                 let database = self.ref.childByAutoId()
                 database.setValue(dict)
+
+                userRef.observe(DataEventType.value, with: { (snapshot) in
+                    for item in snapshot.children {
+                        let datasnapshot = item as! DataSnapshot
+                        let dict = datasnapshot.value as! [String: Any]
+                        if (self.isMatch(user: dict) && dict["fcmToken"] as? String != nil) {
+                            database.child("matched").childByAutoId().setValue([
+                                dict["fcmToken"]! as! String: true
+                            ])
+                        }
+                    }
+                })
             }
-            
-            
+
 //            let calendar = NSCalendar.current
 //
 //            var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.DateTime.date)
