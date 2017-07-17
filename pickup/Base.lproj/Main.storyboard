@@ -1262,11 +1262,24 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="Bio" destination="tsm-ek-f77" id="NER-hg-z7x"/>
                         <outlet property="NameLabel" destination="hz2-7H-uiY" id="mkv-F5-iva"/>
                         <outlet property="NoButton" destination="X0h-aB-LMd" id="eGp-Lf-b9f"/>
                         <outlet property="ProfilePic" destination="t8F-u2-V1N" id="VGc-sl-bzT"/>
                         <outlet property="YesButton" destination="2c6-14-Gok" id="Min-2v-s7B"/>
                         <outlet property="kolodaView" destination="7PD-bC-pzU" id="sBE-Ps-KE6"/>
+                        <outletCollection property="sport1dots" destination="OJS-kM-1YJ" collectionClass="NSMutableArray" id="tux-CK-e9K"/>
+                        <outletCollection property="sport1dots" destination="RoQ-zy-dk5" collectionClass="NSMutableArray" id="hPm-Pv-E8N"/>
+                        <outletCollection property="sport1dots" destination="f8z-ce-xX1" collectionClass="NSMutableArray" id="8d8-Rn-1YT"/>
+                        <outletCollection property="sport2dots" destination="WWV-V9-7Mz" collectionClass="NSMutableArray" id="eZK-1m-xt7"/>
+                        <outletCollection property="sport2dots" destination="t2Q-Zd-N3B" collectionClass="NSMutableArray" id="8SU-zy-8Y9"/>
+                        <outletCollection property="sport2dots" destination="plU-W5-htM" collectionClass="NSMutableArray" id="vvB-Ah-ufh"/>
+                        <outletCollection property="sport3dots" destination="cbh-vD-Zew" collectionClass="NSMutableArray" id="B7f-wx-l2v"/>
+                        <outletCollection property="sport3dots" destination="r0t-j8-ze9" collectionClass="NSMutableArray" id="CqP-uK-QYc"/>
+                        <outletCollection property="sport3dots" destination="Fis-oc-K5U" collectionClass="NSMutableArray" id="7hE-TG-ueQ"/>
+                        <outletCollection property="sport4dots" destination="A3r-aA-4Va" collectionClass="NSMutableArray" id="ClO-vD-aj4"/>
+                        <outletCollection property="sport4dots" destination="xOw-e3-hjt" collectionClass="NSMutableArray" id="j5f-QH-XlB"/>
+                        <outletCollection property="sport4dots" destination="4ng-lN-xL1" collectionClass="NSMutableArray" id="Biy-Ld-vhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF5-Eo-z1d" userLabel="First Responder" sceneMemberID="firstResponder"/>

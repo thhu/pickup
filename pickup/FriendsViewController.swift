@@ -26,12 +26,28 @@ class ProfileData2 {
 
 class FriendsViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet var sport1dots: Array<UIImageView>?
+    @IBOutlet var sport2dots: Array<UIImageView>?
+    @IBOutlet var sport3dots: Array<UIImageView>?
+    @IBOutlet var sport4dots: Array<UIImageView>?
     
     var ref: DatabaseReference!
     var userItems: [ProfileData2] = []
+    var itemIdx = 0
     fileprivate var dataSource: [UIImage] = []
     
-    
+    func updateDots(i: Int, dots: Array<UIImageView>) {
+        var j = 0
+        for img in dots {
+            if (j < i) {
+                img.isHidden = false
+            }
+            else {
+                img.isHidden = true
+            }
+            j += 1
+        }
+    }
     
     // LIFECYCLE
     
@@ -42,7 +58,7 @@ class FriendsViewController: UIViewController {
         kolodaView.delegate = self
         
         self.ref = Database.database().reference().child("user")
-        
+        itemIdx = 0
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
@@ -67,8 +83,14 @@ class FriendsViewController: UIViewController {
                 }
                 self.userItems.append(data)
                 itemIndex = itemIndex + 1
+                
             }
-           
+            self.Bio.text = self.userItems[0].bio
+            self.NameLabel.text = "\(self.userItems[0].firstName ?? "") \(self.userItems[0].lastName ?? "")"
+            self.updateDots(i: self.userItems[0].lvl1, dots: self.sport1dots!)
+            self.updateDots(i: self.userItems[0].lvl2, dots: self.sport2dots!)
+            self.updateDots(i: self.userItems[0].lvl3, dots: self.sport3dots!)
+            self.updateDots(i: self.userItems[0].lvl4, dots: self.sport4dots!)
         })
         
         
@@ -190,6 +212,16 @@ extension FriendsViewController: KolodaViewDelegate {
     func koloda(koloda: KolodaView, didSelectCardAt index: Int) {
         //handle right swipe
     }
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        self.itemIdx += 1
+        self.Bio.text = self.userItems[self.itemIdx].bio
+        self.NameLabel.text = "\(self.userItems[self.itemIdx].firstName ?? "") \(self.userItems[self.itemIdx].lastName ?? "")"
+        self.updateDots(i: self.userItems[self.itemIdx].lvl1, dots: self.sport1dots!)
+        self.updateDots(i: self.userItems[self.itemIdx].lvl2, dots: self.sport2dots!)
+        self.updateDots(i: self.userItems[self.itemIdx].lvl3, dots: self.sport3dots!)
+        self.updateDots(i: self.userItems[self.itemIdx].lvl4, dots: self.sport4dots!)
+    }
 }
 
 extension FriendsViewController: KolodaViewDataSource {
@@ -216,4 +248,6 @@ extension FriendsViewController: KolodaViewDataSource {
         /*return NSBundle.mainBundle().loadNibNamed("OverlayView",
          owner: self, options: nil)[0] as? OverlayView*/
     }
+    
+   
 }
