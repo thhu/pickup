@@ -1397,7 +1397,11 @@
         <image name="joshuadoe" width="512" height="512"/>
         <image name="nancydrew" width="535" height="520"/>
         <image name="no" width="48" height="48"/>
+        <image name="pp2" width="512" height="512"/>
         <image name="sarahsmith" width="516" height="503"/>
         <image name="yes" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YV1-1V-cxR"/>
+    </inferredMetricsTieBreakers>
 </document>
