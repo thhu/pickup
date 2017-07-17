@@ -911,7 +911,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-np-d49">
+                            <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-np-d49">
                                 <rect key="frame" x="16" y="344" width="134" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="cvS-NF-6Ow"/>
@@ -1124,10 +1124,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pp2" translatesAutoresizingMaskIntoConstraints="NO" id="t8F-u2-V1N">
-                                <rect key="frame" x="75" y="85" width="225" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basket" translatesAutoresizingMaskIntoConstraints="NO" id="XF3-eq-Gpn">
                                 <rect key="frame" x="27" y="362" width="52" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1242,7 +1238,6 @@
                         <outlet property="Bio" destination="tsm-ek-f77" id="NER-hg-z7x"/>
                         <outlet property="NameLabel" destination="hz2-7H-uiY" id="mkv-F5-iva"/>
                         <outlet property="NoButton" destination="X0h-aB-LMd" id="eGp-Lf-b9f"/>
-                        <outlet property="ProfilePic" destination="t8F-u2-V1N" id="VGc-sl-bzT"/>
                         <outlet property="YesButton" destination="2c6-14-Gok" id="Min-2v-s7B"/>
                         <outlet property="kolodaView" destination="7PD-bC-pzU" id="sBE-Ps-KE6"/>
                         <outletCollection property="sport1dots" destination="OJS-kM-1YJ" collectionClass="NSMutableArray" id="tux-CK-e9K"/>
@@ -1389,7 +1384,6 @@
         <image name="joshuadoe" width="512" height="512"/>
         <image name="nancydrew" width="535" height="520"/>
         <image name="no" width="48" height="48"/>
-        <image name="pp2" width="512" height="512"/>
         <image name="sarahsmith" width="516" height="503"/>
         <image name="yes" width="48" height="48"/>
     </resources>

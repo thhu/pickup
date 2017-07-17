@@ -173,21 +173,11 @@ class FriendsViewController: UIViewController {
     
     
     @IBAction func NoClick(_ sender: Any) {
-        /*ProfilePic.isHidden = true
-        ProfilePic2.isHidden = true
-        ProfilePic3.isHidden = false*/
-        ProfilePic.image = #imageLiteral(resourceName: "nancydrew")
-        NameLabel.text = "Nancy Drew, 24"
-        HockeyLevels1.image = #imageLiteral(resourceName: "hollow")
+        kolodaView?.swipe(.left)
     }
     
     @IBAction func YesClick(_ sender: Any) {
-        /*ProfilePic.isHidden = true
-        ProfilePic2.isHidden = false
-        ProfilePic3.isHidden = true*/
-        ProfilePic.image = #imageLiteral(resourceName: "sarahsmith")
-        NameLabel.text = "Sarah Smith, 24"
-        HockeyLevels1.image = #imageLiteral(resourceName: "filled")
+        kolodaView?.swipe(.right)
     }
     
     /*@IBAction func NoClick(_ sender: Any) {
