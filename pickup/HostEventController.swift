@@ -16,13 +16,14 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var inviteBarBtn: UIBarButtonItem!
+    
     @IBOutlet weak var Sport: UIButton!
     @IBOutlet weak var Location: UIButton!
     @IBOutlet weak var Level: UIButton!
     @IBOutlet weak var NumPlayers: UILabel!
     //@IBOutlet weak var AdjustNumPlayers: UIStepper!
     
-    @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var verificationLabel: UILabel!
     
     @IBOutlet weak var detailPickerView: UIView!
@@ -44,18 +45,26 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     let levelDropDown = DropDown()
     
     let sportsData = ["Basketball", "Baseball", "Football", "Badminton", "Soccer"]
+    let levelsData = ["All", "Casual", "Novice", "Intermediate", "Advanced"]
+    let playersData = ["2", "4", "6", "8", "10"]
     let locData = ["CIF Gym 1", "CIF Gym 2", "PAC Small Gym", "PAC Main Gym", "Warrior Field"]
     
-    var pickingSport = true                 //if not picking sport, picking location implied
+    var pickerData = 0              // 0 => sport, 1 => level, 2 => players, 3 => location
     
     var selectedSport = ""
+    var selectedLevel = ""
+    var selectedPlayers = "2"
     var selectedDate = Date()
     var selectedStart = Date()
     var selectedEnd = Date()
+    
     var sportSet = false
+    var levelSet = false
+    var playersSet = false
     var dateSet = false
     var startSet = false
     var endSet = false
+    var locSet = false
     
     var selectedLoc = ""
     
@@ -158,7 +167,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return 3
         case 1:
             return 3
         default:
@@ -171,7 +180,14 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = "Sport"
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "Sport"
+            case 1:
+                cell.textLabel?.text = "Level"
+            default:
+                cell.textLabel?.text = "Players"
+            }
         case 1:
             switch indexPath.row {
             case 0:
@@ -202,14 +218,27 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         
         switch indexPath.section {
         case 0:
-            detailPickerLabel?.text = "Sport"
             detailsTimePicker.isHidden = true
-            pickingSport = true
+            
+            switch indexPath.row {
+            case 0:
+                detailPickerLabel?.text = "Sport"
+                pickerData = 0
+            case 1:
+                detailPickerLabel?.text = "Level"
+                pickerData = 1
+            default:
+                detailPickerLabel?.text = "Players"
+                pickerData = 2
+            }
+            
             detailsMiscPicker.reloadAllComponents()
             detailsMiscPicker.isHidden = false
             okBtn.isEnabled = false
         case 1:
             detailsMiscPicker.isHidden = true
+            okBtn.isEnabled = true
+            
             switch indexPath.row {
             case 0:
                 detailPickerLabel?.text = "Date"
@@ -236,7 +265,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
                 scrape(date: selectedDate)
                 detailPickerLabel?.text = "Location"
                 detailsTimePicker.isHidden = true
-                pickingSport = false
+                pickerData = 3
                 detailsMiscPicker.reloadAllComponents()
                 
                 //~~~
@@ -296,6 +325,10 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
             switch text {
             case "Sport":
                 cell?.detailTextLabel?.text = selectedSport
+            case "Level":
+                cell?.detailTextLabel?.text = selectedLevel
+            case "Players":
+                cell?.detailTextLabel?.text = selectedPlayers
             case "Date":
                 selectedDate = detailsTimePicker.date
                 dateSet = true
@@ -319,14 +352,11 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         detailPickerView.isHidden = true
         tableView.reloadData()
         
-//        if (detailsMiscPicker.isHidden) {
-//            let formatter = DateFormatter()
-//            
-//            formatter.dateFormat = "h:mm a"
-//            cell?.detailTextLabel?.text = formatter.string(from: detailsTimePicker.date)
-//        } else {
-//            cell?.textLabel?.text = selected
-//        }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (sportSet && dateSet && startSet && endSet && locSet) {
+            validateDetails()
+        }
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -338,21 +368,37 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if (pickingSport) {
+        
+        switch pickerData {
+        case 0:
             return sportsData[row]
-        } else {
+        case 1:
+            return levelsData[row]
+        case 2:
+            return playersData[row]
+        default:
             return locData[row]
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         okBtn.isEnabled = true
-        if (pickingSport) {
+        
+        switch pickerData {
+        case 0:
             selectedSport = sportsData[row]
             sportSet = true
-        } else {
+        case 1:
+            selectedLevel = levelsData[row]
+            levelSet = true
+        case 2:
+            selectedPlayers = playersData[row]
+            playersSet = true
+        default:
             selectedLoc = locData[row]
+            locSet = true
         }
+        
     }
     
     func scrape(date: Date) -> Void {
@@ -412,9 +458,8 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func checkClick(_ sender: Any) {
+    func validateDetails() {
         print("SPORTS count: \(sports.count)")
-        //var valid = false
         for index in 0...sports.count-1 {
             if ((sports[index] == selectedSport) ||
                 ((sports[index] == "Warrior Field") &&
@@ -448,16 +493,18 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
                         
                         if (endcomps.hour! < c2comps.hour! ||
                             (endcomps.hour == c2comps.hour && endcomps.minute! <= c2comps.minute!)) {
-                            verificationLabel.text = "YES"
+                            verificationLabel.text = ""
+                            inviteBarBtn.isEnabled = true
                             return
                         }
                     }
                 }
-    
-    
+                
+                
             }
         }
-        verificationLabel.text = "NO"
+        verificationLabel.text = "\(selectedLoc) is not available for \(selectedSport) at the selected times"
+        inviteBarBtn.isEnabled = false
     }
     
 }
