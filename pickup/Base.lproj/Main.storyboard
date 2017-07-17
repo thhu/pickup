@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKZ-zp-rUC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YKZ-zp-rUC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
                 <navigationController id="VQY-Ya-AuQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="CalWhite" id="1k2-vV-WUR"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N3G-Qd-tLk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="N3G-Qd-tLk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -123,14 +123,6 @@
                                     <outlet property="delegate" destination="vFd-SJ-wAV" id="uEO-nf-99Y"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QG5-Tt-WeB">
-                                <rect key="frame" x="16" y="72" width="155" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Facilities"/>
-                                <connections>
-                                    <segue destination="Q2t-fp-Ttt" kind="show" id="GgW-N4-B6g"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
@@ -656,7 +648,7 @@
             <objects>
                 <navigationController id="pxq-6b-7TB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Me" image="Me2" id="CNG-C1-iyp"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="slE-kf-oNU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="slE-kf-oNU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1108,7 +1100,7 @@
             <objects>
                 <navigationController id="9v4-PV-ZQi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="Friends" id="5MD-Yy-rBg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a2J-6m-IjG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a2J-6m-IjG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
