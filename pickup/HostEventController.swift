@@ -73,6 +73,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     var times = [String]()
     
     var ref: DatabaseReference!
+    var eventData: Dictionary<String, String>?
     
     @IBAction func chooseSport(_ sender: UIButton) {
         sportDropDown.show()
@@ -114,6 +115,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         detailPickerView.isHidden = true
+        self.eventData = Dictionary()
         
         setupDropDowns()
 //        AdjustNumPlayers.value = 2
@@ -127,8 +129,15 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "inviteFriends") {
-//            let database = self.ref.childByAutoId()
-//            
+            let curDate = Date()
+            self.eventData?.updateValue("0", forKey: "numAttending")
+            self.eventData?.updateValue(String(curDate.timeIntervalSince1970), forKey: "timestamp")
+            if let dict = eventData {
+                let database = self.ref.childByAutoId()
+                database.setValue(dict)
+            }
+            
+            
 //            let calendar = NSCalendar.current
 //
 //            var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.DateTime.date)
@@ -155,8 +164,6 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
 //            outputs["start"] = sDate!.timeIntervalSince1970
 //            outputs["end"] = eDate!.timeIntervalSince1970
 //            outputs["time"] = timeString
-//            
-//            database.setValue(outputs)
         }
     }
     
@@ -325,27 +332,36 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
             switch text {
             case "Sport":
                 cell?.detailTextLabel?.text = selectedSport
+                self.eventData?.updateValue(selectedSport, forKey: "sport")
             case "Level":
                 cell?.detailTextLabel?.text = selectedLevel
+                self.eventData?.updateValue(selectedLevel, forKey: "level")
             case "Players":
                 cell?.detailTextLabel?.text = selectedPlayers
+                self.eventData?.updateValue(selectedPlayers, forKey: "numPlayers")
             case "Date":
                 selectedDate = detailsTimePicker.date
                 dateSet = true
                 formatter.dateFormat = "MMMM d"
                 cell?.detailTextLabel?.text = formatter.string(from: selectedDate)
+                formatter.dateFormat = "YYYY-MM-DD"
+                self.eventData?.updateValue(formatter.string(from: selectedDate), forKey: "date")
             case "Start":
                 selectedStart = detailsTimePicker.date
                 startSet = true
                 formatter.dateFormat = "h:mm a"
                 cell?.detailTextLabel?.text = formatter.string(from: selectedStart)
+                self.eventData?.updateValue(String(selectedStart.timeIntervalSince1970), forKey: "start")
+                
             case "End":
                 selectedEnd = detailsTimePicker.date
                 endSet = true
                 formatter.dateFormat = "h:mm a"
                 cell?.detailTextLabel?.text = formatter.string(from: selectedEnd)
+                self.eventData?.updateValue(String(selectedEnd.timeIntervalSince1970), forKey: "end")
             default:
                 cell?.detailTextLabel?.text = selectedLoc
+                self.eventData?.updateValue(selectedLoc, forKey: "location")
             }
         }
         
