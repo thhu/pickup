@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Koloda
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var FullName: UITextField!
     @IBOutlet weak var ProfilePic: UIImageView!
     @IBOutlet weak var Bio: UITextView!
+
     @IBOutlet var sport1dots: Array<UIImageView>?
     @IBOutlet var sport2dots: Array<UIImageView>?
     @IBOutlet var sport3dots: Array<UIImageView>?
