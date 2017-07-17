@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371596F51F198CD4003B4CEF /* EditAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */; };
+		371596F71F198CFE003B4CEF /* JTCalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371596F61F198CFE003B4CEF /* JTCalCellView.swift */; };
+		371596F91F198D15003B4CEF /* JTCalCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371596F81F198D15003B4CEF /* JTCalCellView.xib */; };
 		376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */; };
-		376B5F2B1EF3BEFF00EA3F54 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */; };
-		378501651EF034E4003E4C44 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378501641EF034E4003E4C44 /* ProfileViewController.swift */; };
 		378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378501661EF03747003E4C44 /* FriendsViewController.swift */; };
 		378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378779D41EEEB46D007F0DC4 /* EventViewController.swift */; };
 		37AEBCE11EF17845008D425F /* EventDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AEBCE01EF17845008D425F /* EventDetailsController.swift */; };
@@ -25,13 +26,18 @@
 		B85891D1293606CBDD898045 /* Pods_pickupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC4B237FB854C3819F76700 /* Pods_pickupUITests.framework */; };
 		C08325C82E01B5A6418183ED /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 422796C3AEE507956CC6F5D1 /* Pods_pickup.framework */; };
 		C3AECF2DFA8E1395DECD02FC /* Pods_pickupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B8F2D19A96080F5C319965 /* Pods_pickupTests.framework */; };
+		CC44D2E91F185D8C00B0ABF9 /* RegsiterAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC44D2E81F185D8C00B0ABF9 /* RegsiterAccountViewController.swift */; };
+		CC44D2EB1F1914F300B0ABF9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC44D2EA1F1914F300B0ABF9 /* Login.storyboard */; };
 		CC8666B41EDF280F00CBB922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666B31EDF280F00CBB922 /* AppDelegate.swift */; };
 		CC8666B91EDF280F00CBB922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8666B71EDF280F00CBB922 /* Main.storyboard */; };
 		CC8666BB1EDF280F00CBB922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8666BA1EDF280F00CBB922 /* Assets.xcassets */; };
 		CC8666BE1EDF280F00CBB922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8666BC1EDF280F00CBB922 /* LaunchScreen.storyboard */; };
-		CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666C81EDF280F00CBB922 /* pickupTests.swift */; };
 		CC8666D41EDF280F00CBB922 /* pickupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666D31EDF280F00CBB922 /* pickupUITests.swift */; };
 		CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */; };
+		D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D039A1251F17CA1B002A4383 /* LoginViewController.swift */; };
+		D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */; };
+		D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */; };
+		D47F2E63F27E2AEA0AA6BD6A /* Pods_pickup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2529698C5CA8157212E64330 /* Pods_pickup.framework */; };
 		FD45A90BBE5936AB4BCEF94D /* Pods_pickupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F3EE7C1EA7EFF62BF370A3 /* Pods_pickupUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,9 +66,10 @@
 		2529698C5CA8157212E64330 /* Pods_pickup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702AA47A89EBF664DA2A49C /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
 		360F0FF0569F6DE6199DA785 /* Pods-pickup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickup.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickup/Pods-pickup.release.xcconfig"; sourceTree = "<group>"; };
+		371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAvailabilityViewController.swift; sourceTree = "<group>"; };
+		371596F61F198CFE003B4CEF /* JTCalCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCalCellView.swift; sourceTree = "<group>"; };
+		371596F81F198D15003B4CEF /* JTCalCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTCalCellView.xib; sourceTree = "<group>"; };
 		376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
-		376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
-		378501641EF034E4003E4C44 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		378501661EF03747003E4C44 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		378779D41EEEB46D007F0DC4 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		37AEBCE01EF17845008D425F /* EventDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsController.swift; sourceTree = "<group>"; };
@@ -82,6 +89,8 @@
 		A14C22101FBF3D9EAF4A2A62 /* Pods_pickupUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B8F2D19A96080F5C319965 /* Pods_pickupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC1D18D41EF87001009A0774 /* pickup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pickup.entitlements; sourceTree = "<group>"; };
+		CC44D2E81F185D8C00B0ABF9 /* RegsiterAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegsiterAccountViewController.swift; sourceTree = "<group>"; };
+		CC44D2EA1F1914F300B0ABF9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CC8666B01EDF280F00CBB922 /* pickup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pickup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8666B31EDF280F00CBB922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC8666B51EDF280F00CBB922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +105,9 @@
 		CC8666D31EDF280F00CBB922 /* pickupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickupUITests.swift; sourceTree = "<group>"; };
 		CC8666D51EDF280F00CBB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D039A1251F17CA1B002A4383 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E2E5D967DD7837C20E0BBE0D /* Pods_pickupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pickupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E885845A0ADCFB5F76AF55FF /* Pods-pickupTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickupTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pickupTests/Pods-pickupTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F84DB5CCB4B3DB224328D76D /* Pods-pickupTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pickupTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pickupTests/Pods-pickupTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,8 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08325C82E01B5A6418183ED /* Pods_pickup.framework in Frameworks */,
-				6FCC5ECEEAD9D075BA3D3FC8 /* Pods_pickup.framework in Frameworks */,
-				8E9B7B5B8924A878F7173CE0 /* Pods_pickup.framework in Frameworks */,
+				D47F2E63F27E2AEA0AA6BD6A /* Pods_pickup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +162,17 @@
 		376B5F271EF3BA6E00EA3F54 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				371596F41F198CD4003B4CEF /* EditAvailabilityViewController.swift */,
+				CC44D2E81F185D8C00B0ABF9 /* RegsiterAccountViewController.swift */,
+				D039A1251F17CA1B002A4383 /* LoginViewController.swift */,
 				37D866B81EF386F9009A6AEE /* InviteViewController.swift */,
 				37AEBCE01EF17845008D425F /* EventDetailsController.swift */,
 				37AEBCE21EF178A9008D425F /* HostEventController.swift */,
 				378501661EF03747003E4C44 /* FriendsViewController.swift */,
-				378501641EF034E4003E4C44 /* ProfileViewController.swift */,
 				378779D41EEEB46D007F0DC4 /* EventViewController.swift */,
 				376B5F281EF3BD0600EA3F54 /* FriendsListViewController.swift */,
-				376B5F2A1EF3BEFF00EA3F54 /* AvailabilityViewController.swift */,
+				D0E3C8FC1EFAADB3008878F0 /* ProfileViewController.swift */,
+				D0E3C8FE1EFAAF18008878F0 /* EditProfileViewController.swift */,
 				51592F5C1EFA30900032F606 /* PlayersViewController.swift */,
 				51A2C5561F02E8C900ACE711 /* FacilitiesViewController.swift */,
 			);
@@ -215,14 +229,17 @@
 		CC8666B21EDF280F00CBB922 /* pickup */ = {
 			isa = PBXGroup;
 			children = (
+				371596F81F198D15003B4CEF /* JTCalCellView.xib */,
 				CC1D18D41EF87001009A0774 /* pickup.entitlements */,
 				CC8666E11EDF2C4F00CBB922 /* GoogleService-Info.plist */,
 				376B5F271EF3BA6E00EA3F54 /* ViewControllers */,
 				CC8666B31EDF280F00CBB922 /* AppDelegate.swift */,
 				CC8666B51EDF280F00CBB922 /* ViewController.swift */,
 				CC8666B71EDF280F00CBB922 /* Main.storyboard */,
+				371596F61F198CFE003B4CEF /* JTCalCellView.swift */,
 				CC8666BA1EDF280F00CBB922 /* Assets.xcassets */,
 				CC8666BC1EDF280F00CBB922 /* LaunchScreen.storyboard */,
+				CC44D2EA1F1914F300B0ABF9 /* Login.storyboard */,
 				CC8666BF1EDF280F00CBB922 /* Info.plist */,
 			);
 			path = pickup;
@@ -287,7 +304,6 @@
 			buildConfigurationList = CC8666DB1EDF280F00CBB922 /* Build configuration list for PBXNativeTarget "pickupTests" */;
 			buildPhases = (
 				772D113DA38BF2B769C74196 /* [CP] Check Pods Manifest.lock */,
-				CC8666C01EDF280F00CBB922 /* Sources */,
 				CC8666C11EDF280F00CBB922 /* Frameworks */,
 				CC8666C21EDF280F00CBB922 /* Resources */,
 				2694072F756385C49C8B2D9D /* [CP] Embed Pods Frameworks */,
@@ -343,6 +359,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -389,8 +408,10 @@
 			files = (
 				CC8666BE1EDF280F00CBB922 /* LaunchScreen.storyboard in Resources */,
 				CC8666E21EDF2C4F00CBB922 /* GoogleService-Info.plist in Resources */,
+				CC44D2EB1F1914F300B0ABF9 /* Login.storyboard in Resources */,
 				CC8666BB1EDF280F00CBB922 /* Assets.xcassets in Resources */,
 				CC8666B91EDF280F00CBB922 /* Main.storyboard in Resources */,
+				371596F91F198D15003B4CEF /* JTCalCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,25 +574,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				376B5F2B1EF3BEFF00EA3F54 /* AvailabilityViewController.swift in Sources */,
+				D0E3C8FD1EFAADB3008878F0 /* ProfileViewController.swift in Sources */,
+				371596F71F198CFE003B4CEF /* JTCalCellView.swift in Sources */,
 				376B5F291EF3BD0600EA3F54 /* FriendsListViewController.swift in Sources */,
 				37AEBCE31EF178A9008D425F /* HostEventController.swift in Sources */,
+				CC44D2E91F185D8C00B0ABF9 /* RegsiterAccountViewController.swift in Sources */,
 				51592F5D1EFA30900032F606 /* PlayersViewController.swift in Sources */,
 				CC8666B41EDF280F00CBB922 /* AppDelegate.swift in Sources */,
-				378501651EF034E4003E4C44 /* ProfileViewController.swift in Sources */,
 				378501671EF03747003E4C44 /* FriendsViewController.swift in Sources */,
 				51A2C5571F02E8C900ACE711 /* FacilitiesViewController.swift in Sources */,
 				37AEBCE11EF17845008D425F /* EventDetailsController.swift in Sources */,
 				37D866B91EF386F9009A6AEE /* InviteViewController.swift in Sources */,
 				378779D51EEEB46D007F0DC4 /* EventViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC8666C01EDF280F00CBB922 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC8666C91EDF280F00CBB922 /* pickupTests.swift in Sources */,
+				D0E3C8FF1EFAAF18008878F0 /* EditProfileViewController.swift in Sources */,
+				D039A1261F17CA1B002A4383 /* LoginViewController.swift in Sources */,
+				371596F51F198CD4003B4CEF /* EditAvailabilityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +746,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LBWRVGK95J;
 				INFOPLIST_FILE = pickup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs446.pickup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -750,6 +768,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LBWRVGK95J;
 				INFOPLIST_FILE = pickup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs446.pickup;
 				PRODUCT_NAME = "$(TARGET_NAME)";

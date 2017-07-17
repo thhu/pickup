@@ -8,10 +8,9 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class EventTableViewCell: UITableViewCell {
-    
-    
     @IBOutlet weak var Sport: UILabel!
     @IBOutlet weak var Location: UILabel!
     @IBOutlet weak var Time: UILabel!
@@ -19,6 +18,7 @@ class EventTableViewCell: UITableViewCell {
 
 class EventData {
     var key: String!
+    var organizer: String!
     var sport: String!
     var location: String!
     var time: String!
@@ -30,26 +30,55 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var ref: DatabaseReference!
     var eventItems: [EventData] = []
+    
+    /** @var handle
+     @brief The handler for the auth state listener, to allow cancelling later.
+     */
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("events")
-        self.ref.observe(.value, with: { snapshot in
-            self.eventItems.removeAll()
-            for item in snapshot.children {
-                let data = item as! DataSnapshot
-                let dictionary = data.value as! [String: String]
-                
-                let eventData = EventData()
-                eventData.key = data.key
-                eventData.sport = dictionary["sport"]
-                eventData.location = dictionary["location"]
-                eventData.time = dictionary["time"]
-                eventData.skillLevel = dictionary["level"]
-                
-                self.eventItems.append(eventData)
-                self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if (user == nil){
+                /*UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"myViewController"];
+                vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                [self presentViewController:vc animated:YES completion:NULL];
+                */
+                var loginView: UIStoryboard!
+                loginView = UIStoryboard(name: "Login", bundle: nil)
+                let viewcontroller : UIViewController = loginView.instantiateViewController(withIdentifier: "LoginView") as UIViewController
+                self.present(viewcontroller, animated: true, completion: nil)
+            } else {
+                self.ref.observe(.value, with: { snapshot in
+                    self.eventItems.removeAll()
+                    for item in snapshot.children {
+                        let data = item as! DataSnapshot
+                        let dictionary = data.value as! [String: Any]
+                        
+                        let eventData = EventData()
+                        eventData.key = data.key
+                        eventData.sport = dictionary["sport"] as! String
+                        eventData.location = dictionary["location"]  as! String
+                        if (dictionary["time"] != nil) {
+                            eventData.time = dictionary["time"]! as! String
+                        }
+                        eventData.skillLevel = dictionary["level"] as! String
+                        self.eventItems.append(eventData)
+                        self.tableView.reloadData()
+                    }
+                })
             }
-        })
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
+        self.ref.removeAllObservers()
     }
     
     override func didReceiveMemoryWarning() {

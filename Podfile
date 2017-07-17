@@ -11,6 +11,10 @@ target 'pickup' do
   pod 'Kanna', '~> 2.1.0'
   pod 'Alamofire', '~> 4.4'
   pod "Koloda"
+  pod 'Firebase/Auth'
+  pod 'FacebookCore'
+  pod 'FacebookLogin' 
+  pod 'JTAppleCalendar', '~> 6.0.0-beta.1'
 end
 
 target 'pickupTests' do
