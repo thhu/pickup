@@ -138,7 +138,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
                 let database = self.ref.childByAutoId()
                 database.setValue(dict)
 
-                userRef.observe(DataEventType.value, with: { (snapshot) in
+                userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     for item in snapshot.children {
                         let datasnapshot = item as! DataSnapshot
                         let dict = datasnapshot.value as! [String: Any]
