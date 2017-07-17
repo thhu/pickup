@@ -506,5 +506,66 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
         verificationLabel.text = "\(selectedLoc) is not available for \(selectedSport) at the selected times"
         inviteBarBtn.isEnabled = false
     }
+
+    func isMatch(user: [String: Any]) -> Bool {
+        //match sport & level
+        let sportNumber = sportsData.index(where: {$0 == selectedSport})
+        
+        if (sportNumber == nil) {
+            return false
+        }
+        
+        let sportKey = "lvl" + String(describing: sportNumber! + 1)
+        let playerLevel = user[sportKey] as? Int
+        let levelNumber = levelsData.index(where: {$0 == selectedLevel})
+
+        if (levelNumber != 0 && (levelNumber ?? -2) - 1 != playerLevel) {
+            // 0 is all levels
+            return false
+        }
+    
+        let availability = user["availability"] as? [String: [String: String]]
+        if (availability == nil ) {
+            return false
+        }
+        
+        
+        var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self.selectedDate)
+        var sComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: self.selectedStart)
+        dateComponents.hour = sComponents.hour
+        dateComponents.minute = sComponents.minute
+        
+        dateComponents.second = sComponents.second
+        
+        let sDate = Calendar.current.date(from: dateComponents)
+        
+        var eComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: self.selectedEnd)
+        dateComponents.hour = eComponents.hour
+        dateComponents.minute = eComponents.minute
+        dateComponents.second = eComponents.second
+        
+        let eDate = Calendar.current.date(from: dateComponents)
+        
+        if (sDate == nil || eDate == nil) {
+            return false
+        }
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy hh:mm a"
+        
+        for (_, pair) in availability! {
+            let endAvail = formatter.date(from: pair["end"]!)
+            let startAvail = formatter.date(from: pair["start"]!)
+            
+            if (startAvail != nil && endAvail != nil) {
+                let block = DateInterval(start: startAvail!, end: endAvail!)
+                if (block.contains(sDate!) && block.contains(eDate!)) {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
     
 }

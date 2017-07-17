@@ -70,11 +70,11 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
             self.ref = Database.database().reference().child("profile")
         }
         
-        formatter.dateFormat = "HH:mm a"
+        formatter.dateFormat = "hh:mm a"
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
         
-        formatter2.dateFormat = "MM-dd-yyyy HH:mm a"
+        formatter2.dateFormat = "MM-dd-yyyy hh:mm a"
         
         calendarView.dataSource = self
         calendarView.delegate = self
