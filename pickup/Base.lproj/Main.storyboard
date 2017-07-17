@@ -762,7 +762,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wO-mP-XyO">
                                 <rect key="frame" x="274" y="363" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="hockey"/>
+                                <state key="normal" image="bad"/>
                                 <connections>
                                     <action selector="Sport4But:" destination="78Q-MM-inX" eventType="touchUpInside" id="AAr-dy-tz4"/>
                                 </connections>
@@ -901,7 +901,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yf-Z2-aff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498" y="-47"/>
+            <point key="canvasLocation" x="1577" y="-47"/>
         </scene>
         <!--Edit Availability-->
         <scene sceneID="cQm-ev-Eoo">
@@ -1051,7 +1051,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UV7-sV-9s1" id="JEP-zd-Zhj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbI-fH-9Vy">
@@ -1140,7 +1140,7 @@
                                 <rect key="frame" x="27" y="362" width="52" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hockey" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-n7-vrn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bad" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-n7-vrn">
                                 <rect key="frame" x="273" y="362" width="52" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1376,11 +1376,11 @@
         <image name="CalWhite" width="20" height="20"/>
         <image name="Friends" width="26" height="19"/>
         <image name="Me2" width="20" height="20"/>
+        <image name="bad" width="50" height="50"/>
         <image name="base" width="50" height="50"/>
         <image name="basket" width="50" height="50"/>
         <image name="filled" width="64" height="64"/>
         <image name="foot" width="50" height="50"/>
-        <image name="hockey" width="50" height="50"/>
         <image name="hollow" width="64" height="64"/>
         <image name="johndoe" width="512" height="512"/>
         <image name="joshuadoe" width="512" height="512"/>
