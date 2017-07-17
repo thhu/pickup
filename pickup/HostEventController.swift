@@ -144,7 +144,7 @@ class HostEventViewController: UIViewController, UITableViewDelegate, UITableVie
                         let dict = datasnapshot.value as! [String: Any]
                         if (self.isMatch(user: dict) && dict["fcmToken"] as? String != nil) {
                             database.child("matched").childByAutoId().setValue([
-                                dict["fcmToken"]! as! String: true
+                                "fcmToken": dict["fcmToken"]! as! String
                             ])
                         }
                     }
