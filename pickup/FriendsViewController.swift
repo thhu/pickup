@@ -68,6 +68,7 @@ class FriendsViewController: UIViewController {
     @IBOutlet weak var Level: UILabel!
     @IBOutlet weak var HockeyLevels1: UIImageView!
     @IBOutlet weak var Bio: UITextView!
+
     /*override func viewDidLoad() {
         super.viewDidLoad()
         /*ProfilePic.isHidden = false
