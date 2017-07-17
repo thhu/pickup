@@ -11,6 +11,7 @@ import Koloda
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseMessaging
 import FBSDKLoginKit
 
 class ProfileSportData {
@@ -182,10 +183,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pictureLoaded = false;
+        
         if let token = UserDefaults.standard.string(forKey: "token") {
             self.ref = Database.database().reference().child("user").child(token)
         } else {
             self.ref = Database.database().reference().child("profile")
+        }
+        if let fcmToken = Messaging.messaging().fcmToken {
+            self.ref.updateChildValues(["fcmToken": fcmToken])
         }
         if let pictureUrl = UserDefaults.standard.string(forKey: "profilePictureUrl"){
             if (!self.pictureLoaded!){
