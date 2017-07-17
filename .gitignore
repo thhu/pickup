@@ -1,7 +1,7 @@
 /Pods*
 Podfile.lock
 pickup.xcodeproj/xcuserdata/Jasvin.xcuserdatad*
-pickup\.xcworkspace/xcuserdata
+pickup\.xcworkspace/xcuserdata*
 pickup.xcworkspace/xcuserdata/Jasvin.xcuserdatad*
 */.DS_Store
 pickup.xcworkspace*
