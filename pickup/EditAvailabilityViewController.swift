@@ -42,7 +42,7 @@ class EditAvailabilityViewController: UIViewController, UITableViewDelegate, UIT
         self.ref.removeValue()
         for block in self.timeBlocks {
             self.ref.childByAutoId().setValue(["start": self.formatter2.string(for: block.start), "end": self.formatter2.string(for: block.end)])
-        }
+           }
     }
     
     override func viewWillAppear(_ animated: Bool) {

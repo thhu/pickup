@@ -8,20 +8,30 @@
 
 import UIKit
 import Koloda
+import FirebaseDatabase
 
 private var numberOfCards: Int = 5
+
+class ProfileData2 {
+    var firstName: String!
+    var lastName: String!
+    var lvl1: Int!
+    var lvl2: Int!
+    var lvl3: Int!
+    var lvl4: Int!
+    var bio: String?
+    var imageUrl: String?
+    var image: UIImage?
+}
 
 class FriendsViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
     
-    fileprivate var dataSource: [UIImage] = {
-        var array: [UIImage] = []
-        for index in 0..<numberOfCards {
-            array.append(UIImage(named: "dp\(index+1)")!)
-        }
-        
-        return array
-    }()
+    var ref: DatabaseReference!
+    var userItems: [ProfileData2] = []
+    fileprivate var dataSource: [UIImage] = []
+    
+    
     
     // LIFECYCLE
     
@@ -31,7 +41,48 @@ class FriendsViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
+        self.ref = Database.database().reference().child("user")
+        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            self.userItems.removeAll()
+            var itemIndex: Int = 0;
+            for item in snapshot.children {
+                let datasnapshot = item as! DataSnapshot
+                let dict = datasnapshot.value as! [String: Any]
+                let data = ProfileData2()
+                data.firstName = dict["firstName"] as! String
+                data.lastName = dict["lastName"] as! String
+                data.bio = dict["bio"] as! String
+                data.imageUrl = dict["pictureUrl"] as? String
+                data.lvl1 = ((dict["lvl1"]) != nil) ? Int((dict["lvl1"] as! Int)) : 0
+                data.lvl2 = ((dict["lvl2"]) != nil) ? Int((dict["lvl2"] as! Int)) : 0
+                data.lvl3 = ((dict["lvl3"]) != nil) ? Int((dict["lvl3"] as! Int)) : 0
+                data.lvl4 = ((dict["lvl4"]) != nil) ? Int((dict["lvl4"] as! Int)) : 0
+                if let url = data.imageUrl {
+                    self.loadProfilePicture(url: url, index: itemIndex)
+                }
+                self.userItems.append(data)
+                itemIndex = itemIndex + 1
+            }
+            self.dataSource = {
+                var array: [UIImage] = []
+                for index in 0..<numberOfCards {
+                    array.append(self.userItems[index].image!)//UIImage(named: "dp\(index+1)")!)
+                }
+            
+                return array
+            }()
+        })
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.ref.removeAllObservers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +101,27 @@ class FriendsViewController: UIViewController {
     
     @IBAction func undoButtonTapped() {
         kolodaView?.revertAction()
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func loadProfilePicture(url: String, index: Int){
+        if let picUrl = URL(string: url) {
+            getDataFromUrl(url: picUrl) { (data, response, error)  in
+                guard let data = data, error == nil else { return }
+                print(response?.suggestedFilename ?? picUrl.lastPathComponent)
+                print("Download Finished")
+                DispatchQueue.main.async() { () -> Void in
+                    self.userItems[index].image = UIImage(data: data)
+                }
+            }
+            
+        }
     }
     
     var swipes = 0
