@@ -58,11 +58,11 @@ class FriendsViewController: UIViewController {
         kolodaView.delegate = self
         
         self.ref = Database.database().reference().child("user")
-        itemIdx = 0
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        itemIdx = 0
         self.ref.observe(DataEventType.value, with: { (snapshot) in
             self.userItems.removeAll()
             var itemIndex: Int = 0;
@@ -201,12 +201,8 @@ class FriendsViewController: UIViewController {
 
 extension FriendsViewController: KolodaViewDelegate {
     
-    func kolodaDidRunOutOfCards(koloda: KolodaView) {
-        let position = kolodaView.currentCardIndex
-        for i in 1...4 {
-            dataSource.append(UIImage(named: "dp\(i)")!)
-        }
-        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
+    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        kolodaView.resetCurrentCardIndex()
     }
     
     func koloda(koloda: KolodaView, didSelectCardAt index: Int) {
@@ -214,7 +210,11 @@ extension FriendsViewController: KolodaViewDelegate {
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        if (self.itemIdx == 2) {
+            self.itemIdx = 0
+        } else {
         self.itemIdx += 1
+        }
         self.Bio.text = self.userItems[self.itemIdx].bio
         self.NameLabel.text = "\(self.userItems[self.itemIdx].firstName ?? "") \(self.userItems[self.itemIdx].lastName ?? "")"
         self.updateDots(i: self.userItems[self.itemIdx].lvl1, dots: self.sport1dots!)
